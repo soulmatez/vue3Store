@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-20 09:26:42
- * @LastEditTime: 2022-06-20 09:37:54
+ * @LastEditTime: 2022-06-27 17:02:48
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \storeVue3Ts\src\api\system\user.ts
@@ -18,7 +18,7 @@ import {
  */
  export function getUserInfo(): AxiosPromise<UserInfo> {
     return request({
-      url: '/youlai-admin/api/v1/users/me',
+      url: '/users/me',
       method: 'get',
     });
   }

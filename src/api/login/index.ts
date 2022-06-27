@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-20 09:40:07
- * @LastEditTime: 2022-06-21 13:09:08
+ * @LastEditTime: 2022-06-27 17:02:12
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \storeVue3Ts\src\api\login\index.ts
@@ -17,7 +17,7 @@ import { AxiosPromise } from 'axios';
  */
 export function login(data: LoginFormData): AxiosPromise<LoginResponseData> {
   return request({
-    url: '/youlai-auth/oauth/token',
+    url: '/oauth/token',
     method: 'post',
     params: data,
     headers: {
@@ -31,7 +31,7 @@ export function login(data: LoginFormData): AxiosPromise<LoginResponseData> {
  */
 export function logout() {
   return request({
-    url: '/youlai-auth/oauth/logout',
+    url: '/oauth/logout',
     method: 'delete',
   });
 }

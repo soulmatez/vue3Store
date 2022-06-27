@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-17 15:31:17
- * @LastEditTime: 2022-06-27 13:44:48
+ * @LastEditTime: 2022-06-27 17:06:25
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \storeVue3Ts\src\router\index.ts
@@ -32,20 +32,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
   },
   {
     path: '/',
-    redirect: '/home',
-    // children: [
-    //   {
-    //     path: 'home',
-    //     component: () => import('@/views/home/index.vue'),
-    //     name: 'Home',
-    //     meta: { title: 'home', icon: 'homepage', affix: true },
-    //   },
-    //   {
-    //     path: '401',
-    //     component: () => import('@/views/error-page/401.vue'),
-    //     meta: { hidden: true },
-    //   }
-    // ],
+    redirect: '/home'
   }
 ];
 

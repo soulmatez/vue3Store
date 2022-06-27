@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-17 16:55:23
- * @LastEditTime: 2022-06-22 10:25:50
+ * @LastEditTime: 2022-06-27 17:04:20
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \storeVue3Ts\src\lang\en.ts
@@ -20,7 +20,7 @@ export default {
       password: 'Password',
       login: 'Login',
       code: 'Verification Code',
-      copyright: 'Copyright © 2021 - 2022 youlai.tech All Rights Reserved. ',
+      copyright: 'Copyright © 2021 - 2022 soulsuper.tech All Rights Reserved. ',
       icp: '',
     },
     // 导航栏国际化

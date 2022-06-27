@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-22 10:00:08
- * @LastEditTime: 2022-06-27 13:43:45
+ * @LastEditTime: 2022-06-27 17:02:26
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \storeVue3Ts\src\api\system\menu.ts
@@ -16,7 +16,7 @@ import { AxiosPromise } from 'axios';
  */
 export function listRoutes() {
   return request({
-    url: '/youlai-admin/api/v1/menus/route',
+    url: '/menus/route',
     method: 'get',
   });
 }
@@ -30,7 +30,7 @@ export function listTableMenus(
   queryParams: MenuQueryParam
 ): AxiosPromise<MenuItem[]> {
   return request({
-    url: '/youlai-admin/api/v1/menus/table',
+    url: '/menus/table',
     method: 'get',
     params: queryParams,
   });
@@ -44,7 +44,7 @@ export function listTableMenus(
  */
 export function getMenuDetail(id: number): AxiosPromise<MenuFormData> {
   return request({
-    url: '/youlai-admin/api/v1/menus/' + id,
+    url: '/menus/' + id,
     method: 'get',
   });
 }
@@ -56,7 +56,7 @@ export function getMenuDetail(id: number): AxiosPromise<MenuFormData> {
  */
 export function addMenu(data: MenuFormData) {
   return request({
-    url: '/youlai-admin/api/v1/menus',
+    url: '/menus',
     method: 'post',
     data: data,
   });
@@ -70,7 +70,7 @@ export function addMenu(data: MenuFormData) {
  */
 export function updateMenu(id: string, data: MenuFormData) {
   return request({
-    url: '/youlai-admin/api/v1/menus/' + id,
+    url: '/menus/' + id,
     method: 'put',
     data: data,
   });
@@ -83,7 +83,7 @@ export function updateMenu(id: string, data: MenuFormData) {
  */
 export function deleteMenus(ids: string) {
   return request({
-    url: '/youlai-admin/api/v1/menus/' + ids,
+    url: '/menus/' + ids,
     method: 'delete',
   });
 }
