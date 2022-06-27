@@ -1,10 +1,6 @@
 <h1 align="center">Vue3 + Ts + Vite + ElementPlus</h1>
 <p align="center">
-  <!-- <a href="">
-    <img src="./src/public/vue3.png">
-  </a> -->
   <p align="right">作者：Soulmate</p>
-  <br>
 </p>
 <p align="center">一款技术栈基于vue3的项目架子，涉及axios、element+、pinia、国际化等插件</p>
 
@@ -20,11 +16,11 @@
 ## 简介
 
 ### 项目仓库
-- [国外 GitHub]()
-- [国内 Gitee]()
+- [国外 GitHub](https://github.com/soulmatez/vue3Store.git)
+- [国内 Gitee](https://github.com/soulmatez/vue3Store.git)
 
 ### 线上demo
-- [Vue3TsCliStore 在线预览]()
+- [Vue3TsCliStore 在线预览](https://github.com/soulmatez/vue3Store.git)
 
 > 生产环境使用 [Mockjs]() 代替
 
