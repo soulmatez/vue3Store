@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-20 09:36:30
- * @LastEditTime: 2022-06-22 11:09:34
+ * @LastEditTime: 2022-06-29 09:09:42
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \storeVue3Ts\src\utils\request.ts
@@ -42,7 +42,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response: AxiosResponse) => {
     const { code, msg } = response.data;
-    if (code === '00000') {
+    if (code === 1) {
       return response.data;
     } else {
       // 响应数据为二进制流处理(Excel导出)

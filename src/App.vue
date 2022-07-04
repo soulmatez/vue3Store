@@ -1,14 +1,14 @@
 <!--
  * @Author: Soulmate
  * @Date: 2022-06-17 14:18:28
- * @LastEditTime: 2022-06-20 13:42:45
+ * @LastEditTime: 2022-06-28 11:02:59
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \storeVue3Ts\src\App.vue
  * 版权声明
 -->
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, ref, watch, provide } from "vue";
 import { ElConfigProvider } from "element-plus";
 
 import useStore from '@/store';
@@ -16,6 +16,7 @@ import useStore from '@/store';
 // 导入 Element Plus 语言包
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 import en from "element-plus/es/locale/lang/en";
+
 
 const { app } = useStore();
 

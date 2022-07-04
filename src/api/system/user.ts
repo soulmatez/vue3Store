@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-20 09:26:42
- * @LastEditTime: 2022-06-27 17:02:48
+ * @LastEditTime: 2022-06-29 09:06:12
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \storeVue3Ts\src\api\system\user.ts
@@ -10,7 +10,7 @@
 import request from '@/utils/request';
 import { AxiosPromise } from 'axios';
 import {
-  UserInfo
+  UserInfo, RootObject
 } from '@/types';
 
 /**
@@ -22,3 +22,13 @@ import {
       method: 'get',
     });
   }
+
+/**
+ * 登录成功后获取用户信息（昵称、头像、权限集合和角色集合）
+ */
+ export function test(): AxiosPromise<RootObject>{
+  return request({
+    url: 'https://tt.guangtuoit.cn/',
+    method: 'get',
+  });
+}

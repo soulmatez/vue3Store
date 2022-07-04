@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-20 09:40:07
- * @LastEditTime: 2022-06-27 17:02:12
+ * @LastEditTime: 2022-06-28 13:25:56
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \storeVue3Ts\src\api\login\index.ts
@@ -21,7 +21,7 @@ export function login(data: LoginFormData): AxiosPromise<LoginResponseData> {
     method: 'post',
     params: data,
     headers: {
-      Authorization: 'Basic bWFsbC1hZG1pbi13ZWI6MTIzNDU2', // 客户端信息Base64明文：mall-admn-web:123456
+      Authorization: 'Basic bWFsbC1hZG1pbi13ZWI6MTIzNDU2', // 客户端信息Base64明文：
     },
   });
 }
