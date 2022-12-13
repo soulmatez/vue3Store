@@ -1,10 +1,10 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-20 09:36:30
- * @LastEditTime: 2022-06-29 09:09:42
+ * @LastEditTime: 2022-12-13 14:18:45
  * @LastEditors: Soulmate
  * @Description: 
- * @FilePath: \storeVue3Ts\src\utils\request.ts
+ * @FilePath: \vue3Store\src\utils\request.ts
  * 版权声明
  */
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -14,7 +14,7 @@ import useStore from '@/store';
 
 // 创建 axios 实例
 const service = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_API,
+  baseURL: import.meta.env.VITE_APP_BASE_API + import.meta.env.VITE_APP_VERSION,
   timeout: 50000,
   headers: { 'Content-Type': 'application/json;charset=utf-8' },
 });
@@ -42,14 +42,13 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response: AxiosResponse) => {
     const { code, msg } = response.data;
-    if (code === 1) {
+    if (code === 200) {
       return response.data;
     } else {
       // 响应数据为二进制流处理(Excel导出)
       if (response.data instanceof ArrayBuffer) {
         return response;
       }
-
       ElMessage({
         message: msg || '系统出错',
         type: 'error',
