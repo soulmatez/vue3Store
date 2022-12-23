@@ -1,10 +1,10 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-17 15:45:43
- * @LastEditTime: 2022-06-20 13:37:23
+ * @LastEditTime: 2022-12-13 16:15:30
  * @LastEditors: Soulmate
  * @Description: 
- * @FilePath: \storeVue3Ts\src\store\modules\user\index.ts
+ * @FilePath: \vue3Store\src\store\modules\user\index.ts
  * 版权声明
  */
 import { defineStore } from 'pinia';
@@ -17,7 +17,7 @@ import { resetRouter } from '@/router';
 const useUserStore = defineStore({
   id: 'user',
   state: (): UserState => ({
-    token: localStorage.get('token') || '',
+    token: localStorage.get('token') || 'ceshiToken',
     nickname: '',
     avatar: '',
     roles: [],

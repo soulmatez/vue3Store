@@ -1,10 +1,10 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-22 09:53:07
- * @LastEditTime: 2022-06-22 16:28:04
+ * @LastEditTime: 2022-12-13 16:18:07
  * @LastEditors: Soulmate
  * @Description: 
- * @FilePath: \storeVue3Ts\src\permission.ts
+ * @FilePath: \vue3Store\src\permission.ts
  * 版权声明
  */
 import router from '@/router';
@@ -21,7 +21,6 @@ router.beforeEach(async (to, from, next) => {
   NProgress.start();
   const { user, permission } = useStore();
   const hasToken = user.token;
-  console.log(hasToken, 'hasToken')
   if (hasToken) {
     // 登录成功，跳转到首页
     if (to.path === '/login') {
@@ -48,7 +47,9 @@ router.beforeEach(async (to, from, next) => {
           // 移除 token 并跳转登录页
           await user.resetToken();
           ElMessage.error((error as any) || 'Has Error');
-          next(`/login?redirect=${to.path}`);
+          // next(`/login?redirect=${to.path}`);
+          console.log(to)
+          next({ ...to, replace: true });
           NProgress.done();
         }
       }

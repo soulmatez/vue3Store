@@ -1,19 +1,33 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-17 15:31:17
- * @LastEditTime: 2022-06-27 17:06:25
+ * @LastEditTime: 2022-12-13 16:04:09
  * @LastEditors: Soulmate
  * @Description: 
- * @FilePath: \storeVue3Ts\src\router\index.ts
+ * @FilePath: \vue3Store\src\router\index.ts
  * 版权声明
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import useStore from '@/store';
 
 
+/** 引入layout */
+export const Layout = () => import('@/layout/index.vue'); 
+
 // 参数说明: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
 // 静态路由
 export const constantRoutes: Array<RouteRecordRaw> = [
+  {
+    path: '/redirect',
+    component: Layout,
+    meta: { hidden: true },
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/redirect/index.vue')
+      }
+    ]
+  },
   {
     path: '/login',
     component: () => import('@/views/login/index.vue'),

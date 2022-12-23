@@ -1,10 +1,10 @@
 <!--
  * @Author: YourName
  * @Date: 2022-06-17 14:21:15
- * @LastEditTime: 2022-07-12 15:28:38
+ * @LastEditTime: 2022-12-13 14:53:40
  * @LastEditors: Soulmate
  * @Description: 
- * @FilePath: \storeVue3\vue3Store\src\views\home\index.vue
+ * @FilePath: \vue3Store\src\views\home\index.vue
  * 版权声明
 -->
 <template>
@@ -13,12 +13,12 @@
       color-format="rgb" 
       v-model="treeStyle.background" 
       @change="getTreeColor" />
-    <MenuTree 
-      :style="treeStyle"
-      :dataTree="treeData.menu" 
-      :maxDeep="maxDeep" 
-      >
-    </MenuTree>
+      <MenuTree 
+        :style="treeStyle"
+        :dataTree="treeData.menu" 
+        :maxDeep="maxDeep" 
+        >
+      </MenuTree>
   </div>
 </template>
 
@@ -44,7 +44,7 @@ const treeData:any = ref({
 
 onMounted(()=>{
   // 获取treeMenu菜单
-  getTreeMenu()
+  // getTreeMenu()
 
   nextTick(()=>{
     setTree()
