@@ -1,18 +1,7 @@
-/*
- * @Author: Soulmate
- * @Date: 2022-06-17 15:31:17
- * @LastEditTime: 2022-12-13 16:04:09
- * @LastEditors: Soulmate
- * @Description: 
- * @FilePath: \vue3Store\src\router\index.ts
- * 版权声明
- */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import useStore from '@/store';
 
-
-/** 引入layout */
-export const Layout = () => import('@/layout/index.vue'); 
+export const Layout = () => import('@/layout/index.vue');
 
 // 参数说明: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
 // 静态路由
@@ -24,20 +13,14 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '/redirect/:path(.*)',
-        component: () => import('@/views/redirect/index.vue')
-      }
-    ]
+        component: () => import('@/views/redirect/index.vue'),
+      },
+    ],
   },
   {
     path: '/login',
     component: () => import('@/views/login/index.vue'),
     meta: { hidden: true },
-  },
-  { 
-    path: '/home',
-    component: () => import('@/views/home/index.vue'),
-    name: 'Home',
-    meta: { title: 'home', icon: 'homepage', affix: true },
   },
   {
     path: '/404',
@@ -46,8 +29,74 @@ export const constantRoutes: Array<RouteRecordRaw> = [
   },
   {
     path: '/',
-    redirect: '/home'
-  }
+    component: Layout,
+    redirect: '/home',
+    children: [
+      {
+        path: 'home',
+        component: () => import('@/views/home/index.vue'),
+        name: 'Home',
+        meta: { title: 'home', icon: 'homepage', affix: true },
+      },
+      {
+        path: '401',
+        component: () => import('@/views/error-page/401.vue'),
+        meta: { hidden: true },
+      }
+    ],
+  },
+  
+  // 外部链接
+  /*{
+        path: '/external-link',
+        component: Layout,
+        children: [
+            {
+                path: 'https://www.cnblogs.com/haoxianrui/',
+                meta: { title: '外部链接', icon: 'link' }
+            }
+        ]
+    }*/
+  // 多级嵌套路由
+  /* {
+         path: '/nested',
+         component: Layout,
+         redirect: '/nested/level1/level2',
+         name: 'Nested',
+         meta: {title: '多级菜单', icon: 'nested'},
+         children: [
+             {
+                 path: 'level1',
+                 component: () => import('@/views/nested/level1/index.vue'),
+                 name: 'Level1',
+                 meta: {title: '菜单一级'},
+                 redirect: '/nested/level1/level2',
+                 children: [
+                     {
+                         path: 'level2',
+                         component: () => import('@/views/nested/level1/level2/index.vue'),
+                         name: 'Level2',
+                         meta: {title: '菜单二级'},
+                         redirect: '/nested/level1/level2/level3',
+                         children: [
+                             {
+                                 path: 'level3-1',
+                                 component: () => import('@/views/nested/level1/level2/level3/index1.vue'),
+                                 name: 'Level3-1',
+                                 meta: {title: '菜单三级-1'}
+                             },
+                             {
+                                 path: 'level3-2',
+                                 component: () => import('@/views/nested/level1/level2/level3/index2.vue'),
+                                 name: 'Level3-2',
+                                 meta: {title: '菜单三级-2'}
+                             }
+                         ]
+                     }
+                 ]
+             },
+         ]
+     }*/
 ];
 
 // 创建路由
@@ -70,4 +119,3 @@ export function resetRouter() {
 }
 
 export default router;
-

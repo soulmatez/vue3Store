@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-17 15:45:43
- * @LastEditTime: 2022-12-13 16:15:30
+ * @LastEditTime: 2022-12-27 09:01:11
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \vue3Store\src\store\modules\user\index.ts
@@ -59,13 +59,16 @@ const useUserStore = defineStore({
       return new Promise((resolve, reject) => {
         getUserInfo()
           .then(({ data }) => {
+            console.log(data)
             if (!data) {
               return reject('Verification failed, please Login again.');
             }
-            const { nickname, avatar, roles, perms } = data;
+            const { permissions:perms, user } = data;
+            const { nickname, avatar, roles } = user;
             if (!roles || roles.length <= 0) {
               reject('getUserInfo: roles must be a non-null array!');
             }
+            console.log(data)
             this.nickname = nickname;
             this.avatar = avatar;
             this.roles = roles;

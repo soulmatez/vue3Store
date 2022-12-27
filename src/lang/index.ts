@@ -1,10 +1,10 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-17 16:50:25
- * @LastEditTime: 2022-06-20 11:57:23
+ * @LastEditTime: 2022-12-23 13:17:12
  * @LastEditors: Soulmate
  * @Description: 
- * @FilePath: \storeVue3Ts\src\lang\index.ts
+ * @FilePath: \vue3Store\src\lang\index.ts
  * 版权声明
  */
 // 自定义国际化配置
@@ -47,6 +47,7 @@ export const getLanguage = () => {
 };
 
 const i18n = createI18n({
+  legacy: false,
   locale: getLanguage(),
   messages: messages,
 });

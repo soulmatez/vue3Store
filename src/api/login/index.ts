@@ -1,10 +1,10 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-20 09:40:07
- * @LastEditTime: 2022-06-28 13:25:56
+ * @LastEditTime: 2022-12-26 15:36:30
  * @LastEditors: Soulmate
  * @Description: 
- * @FilePath: \storeVue3Ts\src\api\login\index.ts
+ * @FilePath: \vue3Store\src\api\login\index.ts
  * 版权声明
  */
 import { Captcha, LoginFormData, LoginResponseData } from '@/types';
@@ -19,7 +19,7 @@ export function login(data: LoginFormData): AxiosPromise<LoginResponseData> {
   return request({
     url: '/oauth/token',
     method: 'post',
-    params: data,
+    data: data,
     headers: {
       Authorization: 'Basic bWFsbC1hZG1pbi13ZWI6MTIzNDU2', // 客户端信息Base64明文：
     },
@@ -41,7 +41,7 @@ export function logout() {
  */
 export function getCaptcha(): AxiosPromise<Captcha> {
   return request({
-    url: '/captcha?t=' + new Date().getTime().toString(),
+    url: '/captchaImage?t=' + new Date().getTime().toString(),
     method: 'get',
   });
 }

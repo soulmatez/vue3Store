@@ -1,10 +1,10 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-07-12 13:54:39
- * @LastEditTime: 2022-07-12 15:18:59
+ * @LastEditTime: 2022-12-26 15:50:46
  * @LastEditors: Soulmate
  * @Description: 
- * @FilePath: \storeVue3\vue3Store\src\api\components\menuTree.ts
+ * @FilePath: \vue3Store\src\api\common\menuTree.ts
  * 版权声明
  */
 import { ComponentTreeList } from '@/types';
@@ -17,7 +17,7 @@ import { AxiosPromise } from 'axios';
  */
 export function getTree(): AxiosPromise<ComponentTreeList> {
   return request({
-    url: '/components/menuTree/getTree',
+    url: '/menuTree/getTree',
     method: 'get'
   });
 }

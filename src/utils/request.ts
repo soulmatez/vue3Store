@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
- * @Date: 2022-06-20 09:36:30
- * @LastEditTime: 2022-12-13 14:18:45
+ * @Date: 2022-12-23 09:25:24
+ * @LastEditTime: 2022-12-26 15:37:13
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \vue3Store\src\utils\request.ts
@@ -13,6 +13,7 @@ import { localStorage } from '@/utils/storage';
 import useStore from '@/store';
 
 // 创建 axios 实例
+console.log('import.meta.env.VITE_APP_BASE_API', import.meta.env.VITE_APP_BASE_API)
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API + import.meta.env.VITE_APP_VERSION,
   timeout: 50000,

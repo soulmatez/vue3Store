@@ -1,24 +1,62 @@
-<!--
- * @Author: Soulmate
- * @Date: 2022-06-20 09:44:47
- * @LastEditTime: 2022-06-27 13:45:42
- * @LastEditors: Soulmate
- * @Description: 
- * @FilePath: \storeVue3Ts\src\views\login\index.vue
- * 版权声明
--->
 <template>
   <div class="login-container">
-      <h3 class="title">{{ $t('login.title') }}</h3>
-      <lang-select class="set-language" />
-      <el-button
-          type="success"
-          v-hasPerm="['sys:user:add']"
-          >新增</el-button>
+    <el-card class="box-card">
+      <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on"
+        label-position="left">
+        <div class="title-container">
+          <h3 class="title">{{ $t('login.title') }}</h3>
+          <lang-select class="set-language" />
+        </div>
+
+        <el-form-item prop="username">
+          <span class="svg-container">
+            <svg-icon icon-class="user" />
+          </span>
+          <el-input ref="username" v-model="loginForm.username" :placeholder="$t('login.username')" name="username"
+            type="text" tabindex="1" auto-complete="on" />
+        </el-form-item>
+
+        <el-tooltip :disabled="capslockTooltipDisabled" content="Caps lock is On" placement="right">
+          <el-form-item prop="password">
+            <span class="svg-container">
+              <svg-icon icon-class="password" />
+            </span>
+            <el-input ref="passwordRef" :key="passwordType" v-model="loginForm.password" :type="passwordType"
+              placeholder="Password" name="password" tabindex="2" auto-complete="on" @keyup="checkCapslock"
+              @blur="capslockTooltipDisabled = true" @keyup.enter="handleLogin" />
+            <span class="show-pwd" @click="showPwd">
+              <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+            </span>
+          </el-form-item>
+        </el-tooltip>
+
+        <!-- 验证码 -->
+        <el-form-item prop="code">
+          <span class="svg-container">
+            <svg-icon icon-class="validCode" />
+          </span>
+          <el-input v-model="loginForm.code" auto-complete="off" :placeholder="$t('login.code')" style="width: 80%"
+            @keyup.enter="handleLogin" />
+
+          <div class="captcha">
+            <img :src="captchaBase64" @click="handleCaptchaGenerate" height="38px" />
+          </div>
+        </el-form-item>
+
+        <el-button size="default" :loading="loading" type="primary" style="width: 100%; background: #4283c7; margin-bottom: 30px"
+          @click.prevent="handleLogin">{{ $t('login.login') }}
+        </el-button>
+      </el-form>
+    </el-card>
+
+    <div v-if="showCopyright == true" class="copyright">
+      <p>{{ $t('login.copyright') }}</p>
+      <p>{{ $t('login.icp') }}</p>
+    </div>
   </div>
 </template>
 
-<script setup lang="ts" name="Login">
+<script setup lang="ts">
 import { onMounted, reactive, ref, toRefs, watch, nextTick } from 'vue';
 
 // 组件依赖
@@ -35,7 +73,7 @@ import { getCaptcha } from '@/api/login';
 import { useRoute } from 'vue-router';
 import { LoginFormData } from '@/types';
 
-const { user } = useStore();  
+const { user } = useStore();
 const route = useRoute();
 
 const loginFormRef = ref(ElForm);
@@ -124,7 +162,7 @@ function handleLogin() {
 function handleCaptchaGenerate() {
   getCaptcha().then(({ data }) => {
     const { img, uuid } = data;
-    state.captchaBase64 = img;
+    state.captchaBase64 = "data:image/gif;base64," + img;
     state.loginForm.uuid = uuid;
   });
 }
@@ -170,6 +208,7 @@ onMounted(() => {
 
 $bg: #283443;
 $light_gray: #fff;
+$dark_gray: #333;
 $cursor: #fff;
 
 /* reset element-ui css */
@@ -177,16 +216,16 @@ $cursor: #fff;
   .title-container {
     position: relative;
 
-    .title {  
+    .title {
       font-size: 26px;
-      color: $light_gray;
+      color: $dark_gray;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
     }
 
     .set-language {
-      color: #fff;
+      color: dark_gray;
       position: absolute;
       top: 3px;
       font-size: 18px;
@@ -198,17 +237,19 @@ $cursor: #fff;
   .el-input {
     display: inline-block;
     height: 36px;
-    width: 85%;
+    width: 80%;
+
     .el-input__wrapper {
       padding: 0;
       background: transparent;
       box-shadow: none;
+
       .el-input__inner {
         background: transparent;
         border: 0px;
         -webkit-appearance: none;
         border-radius: 0px;
-        color: $light_gray;
+        color: #333;
         height: 36px;
         caret-color: $cursor;
 
@@ -250,19 +291,73 @@ $cursor: #fff;
 <style lang="scss" scoped>
 $bg: #2d3a4b;
 $dark_gray: #889aa4;
-$light_gray: #eee;
+$light_gray: #787878;
 
 .login-container {
   min-height: 100%;
   width: 100%;
   background-color: $bg;
   overflow: hidden;
-  .title {
+
+  .login-form {
+    position: relative;
+    width: 520px;
+    max-width: 100%;
+    padding: 30px 35px 0;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .box-card {
+    width: 580px;
+    height: 422px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -211px;
+    margin-left: -290px;
+  }
+
+  .svg-container {
+    padding: 5px 10px;
+    color: $dark_gray;
+    vertical-align: middle;
+    width: 30px;
+    display: inline-block;
+  }
+
+  .title-container {
+    position: relative;
+
+    .title {
       font-size: 26px;
       color: $light_gray;
       margin: 0px auto 40px auto;
       text-align: center;
-      font-weight: bold;
+      font-weight: 400;
     }
+  }
+
+  .show-pwd {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    font-size: 16px;
+    color: $dark_gray;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .captcha {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    img {
+      height: 42px;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+  }
 }
 </style>

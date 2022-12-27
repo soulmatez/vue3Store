@@ -1,12 +1,4 @@
-/*
- * @Author: Soulmate
- * @Date: 2022-06-20 09:09:48
- * @LastEditTime: 2022-06-20 09:09:48
- * @LastEditors: Soulmate
- * @Description: 
- * @FilePath: \storeVue3Ts\src\utils\i18n.ts
- * 版权声明
- */
+// translate router.meta.title, be used in breadcrumb sidebar tagsview
 import i18n from '@/lang/index';
 
 export function generateTitle(title: any) {
@@ -18,4 +10,3 @@ export function generateTitle(title: any) {
   }
   return title;
 }
-

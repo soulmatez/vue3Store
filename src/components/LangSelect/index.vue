@@ -1,12 +1,3 @@
-<!--
- * @Author: Soulmate
- * @Date: 2022-06-20 10:56:59
- * @LastEditTime: 2022-06-20 14:45:54
- * @LastEditors: Soulmate
- * @Description: 
- * @FilePath: \storeVue3Ts\src\components\LangSelect\index.vue
- * 版权声明
--->
 <template>
   <el-dropdown class="lang-select" trigger="click" @command="handleSetLanguage">
     <div class="lang-select__icon">

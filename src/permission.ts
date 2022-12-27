@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-22 09:53:07
- * @LastEditTime: 2022-12-13 16:18:07
+ * @LastEditTime: 2022-12-27 09:04:31
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \vue3Store\src\permission.ts
@@ -29,6 +29,7 @@ router.beforeEach(async (to, from, next) => {
     } else {
       const hasGetUserInfo = user.roles.length > 0;
       if (hasGetUserInfo) {
+        console.log(to, 'to')
         if (to.matched.length === 0) {
           from.name ? next({ name: from.name }) : next('/401');
         } else {
@@ -39,18 +40,17 @@ router.beforeEach(async (to, from, next) => {
           await user.getUserInfo();
           const roles = user.roles;
           const accessRoutes: any = await permission.generateRoutes(roles);
+          console.log(accessRoutes, 'accessRoutes')
           accessRoutes.forEach((route: any) => {
             router.addRoute(route);
           });
           next({ ...to, replace: true });
         } catch (error) {
           // 移除 token 并跳转登录页
-          await user.resetToken();
-          ElMessage.error((error as any) || 'Has Error');
+          // await user.resetToken();
+          // ElMessage.error((error as any) || 'Has Error');
           // next(`/login?redirect=${to.path}`);
-          console.log(to)
-          next({ ...to, replace: true });
-          NProgress.done();
+          // NProgress.done();
         }
       }
     }

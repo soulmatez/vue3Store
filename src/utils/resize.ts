@@ -1,12 +1,3 @@
-/*
- * @Author: Soulmate
- * @Date: 2022-06-28 11:13:54
- * @LastEditTime: 2022-06-28 11:13:54
- * @LastEditors: Soulmate
- * @Description: 
- * @FilePath: \storeVue3Ts\src\utils\resize.ts
- * 版权声明
- */
 import { ref } from 'vue';
 export default function () {
   const chart = ref<any>();

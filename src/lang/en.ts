@@ -1,21 +1,21 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-17 16:55:23
- * @LastEditTime: 2022-06-27 17:04:20
+ * @LastEditTime: 2022-12-26 15:16:27
  * @LastEditors: Soulmate
  * @Description: 
- * @FilePath: \storeVue3Ts\src\lang\en.ts
+ * @FilePath: \vue3Store\src\lang\en.ts
  * 版权声明
  */
 export default {
     // 路由国际化
     route: {
-      dashboard: 'Dashboard',
+      home: 'home',
       document: 'Document',
     },
     // 登录页面国际化
     login: {
-      title: 'I’m Englist Page',
+      title: 'Teamer With You',
       username: 'Username',
       password: 'Password',
       login: 'Login',

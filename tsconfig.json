@@ -15,7 +15,9 @@
     "isolatedModules": false,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "skipLibCheck": true
+    "allowSyntheticDefaultImports": true, // 默认导入
+    "skipLibCheck": true, // 不对第三方依赖类型检查 ，element-plus 生产打包报错
+    "types": ["element-plus/global"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["node_modules"],

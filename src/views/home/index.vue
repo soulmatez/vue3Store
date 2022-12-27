@@ -1,7 +1,7 @@
 <!--
  * @Author: YourName
  * @Date: 2022-06-17 14:21:15
- * @LastEditTime: 2022-12-13 14:53:40
+ * @LastEditTime: 2022-12-26 16:47:03
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \vue3Store\src\views\home\index.vue
@@ -9,16 +9,7 @@
 -->
 <template>
   <div class="common-layout">
-    <el-color-picker 
-      color-format="rgb" 
-      v-model="treeStyle.background" 
-      @change="getTreeColor" />
-      <MenuTree 
-        :style="treeStyle"
-        :dataTree="treeData.menu" 
-        :maxDeep="maxDeep" 
-        >
-      </MenuTree>
+    dad
   </div>
 </template>
 
@@ -29,8 +20,7 @@ import {
   onMounted,
   nextTick
 } from "vue";
-import { getTree } from '@/api/components/menuTree';
-import MenuTree from "@/components/MenuTree/index.vue";
+import { getTree } from '@/api/common/menuTree';
 
 
 let maxDeep = ref(0);
@@ -45,16 +35,13 @@ const treeData:any = ref({
 onMounted(()=>{
   // 获取treeMenu菜单
   // getTreeMenu()
-
-  nextTick(()=>{
-    setTree()
-  })
 })
 
 function getTreeMenu(){
   getTree().then((res)=>{
-    let list = res.data.list[0];
+    let list = res.data.list;
     treeData.value.menu.push(list as never)
+    console.log(treeData.value, 'treeData.value')
     setTree()
   })
 }
@@ -65,7 +52,8 @@ function getTreeColor(e: any){
 }
 
 function setTree(){
-  getTreeAsias(treeData.value.menu)
+  getTreeAsias(treeData.value.menu[0])
+  console.log(treeData.value, 'treeData.value')
   maxDeep.value = setMaxDeepNumber(treeData.value.menu)
 }
 

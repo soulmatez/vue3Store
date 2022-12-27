@@ -1,3 +1,12 @@
+<!--
+ * @Author: Soulmate
+ * @Date: 2022-12-13 16:07:09
+ * @LastEditTime: 2022-12-23 11:21:17
+ * @LastEditors: Soulmate
+ * @Description: 
+ * @FilePath: \vue3Store\src\layout\components\Sidebar\index.vue
+ * 版权声明
+-->
 <template>
   <div :class="{ 'has-logo': showLogo }">
     <logo v-if="showLogo" :collapse="isCollapse" />
@@ -30,7 +39,7 @@ import { useRoute } from 'vue-router';
 
 import SidebarItem from './SidebarItem.vue';
 import Logo from './Logo.vue';
-import variables from '@/styles/variables.module.scss';
+import variables from '@/style/variables.module.scss';
 import useStore from '@/store';
 
 const { permission, setting, app } = useStore();

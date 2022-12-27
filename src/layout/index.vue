@@ -19,7 +19,7 @@
     </div>
   </template>
   
-  <script setup lang="ts">
+  <script lang="ts" setup>
   import { computed, watchEffect } from 'vue';
   import { useWindowSize } from '@vueuse/core';
   import { AppMain, Navbar, Settings, TagsView } from './components/index';
@@ -48,9 +48,11 @@
   
   watchEffect(() => {
     if (width.value < WIDTH) {
+      console.log('1')
       app.toggleDevice('mobile');
       app.closeSideBar(true);
     } else {
+      console.log('2')
       app.toggleDevice('desktop');
     }
   });
@@ -61,8 +63,8 @@
   </script>
   
   <style lang="scss" scoped>
-  @import '@/styles/mixin.scss';
-  @import '@/styles/variables.module.scss';
+  @import '@/style/mixin.scss';
+  @import '@/style/variables.module.scss';
   
   .app-wrapper {
     @include clearfix;
