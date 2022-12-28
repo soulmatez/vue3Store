@@ -7,12 +7,12 @@
         class="sidebar-logo-link"
         to="/"
       >
-        <img v-if="logo" :src="logo" class="sidebar-logo" />
-        <h1 v-else class="sidebar-title">{{ title }}</h1>
+        <img v-if="logo" :src="`/src/assets/logo.png`" class="sidebar-logo" />
+        <h1 v-else class="sidebar-title">{{ $t('app.name') }}</h1>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
         <img v-if="logo" :src="logo" class="sidebar-logo" />
-        <h1 class="sidebar-title">{{ title }}</h1>
+        <h1 class="sidebar-title">{{ $t('app.name') }}</h1>
       </router-link>
     </transition>
   </div>
@@ -20,7 +20,8 @@
 
 <script setup lang="ts">
 import { ref, reactive, toRefs } from 'vue';
-
+import { generateTitle } from '@/utils/i18n';
+import useStore from '@/store'
 const props = defineProps({
   collapse: {
     type: Boolean,
@@ -34,8 +35,10 @@ const state = reactive({
 
 const { isCollapse } = toRefs(state);
 
-const title = ref('youlai-mall');
-const logo = ref('https://www.youlai.tech/files/blog/logo.png');
+const { app } = useStore();
+
+const title = ref('walkerTeam');
+const logo = ref(new URL(`../../../assets/logo.png`, import.meta.url)).value.href;
 </script>
 
 <style lang="scss" scoped>
@@ -62,7 +65,7 @@ const logo = ref('https://www.youlai.tech/files/blog/logo.png');
     width: 100%;
 
     & .sidebar-logo {
-      width: 32px;
+      width: 36px;
       height: 32px;
       vertical-align: middle;
     }

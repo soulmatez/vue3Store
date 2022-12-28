@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-17 15:45:39
- * @LastEditTime: 2022-12-27 13:03:05
+ * @LastEditTime: 2022-12-27 13:56:43
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \vue3Store\src\store\modules\permission\index.ts
@@ -73,7 +73,6 @@ const usePermissionStore = defineStore({
       return new Promise((resolve, reject) => {
         listRoutes()
           .then((response) => {
-            console.log(response, 'response')
             const asyncRoutes = response.data;
             const accessedRoutes = filterAsyncRoutes(asyncRoutes, roles);
             this.setRoutes(accessedRoutes);

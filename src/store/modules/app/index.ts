@@ -1,10 +1,10 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-17 15:45:34
- * @LastEditTime: 2022-06-20 17:23:10
+ * @LastEditTime: 2022-12-27 14:14:08
  * @LastEditors: Soulmate
  * @Description: 
- * @FilePath: \storeVue3Ts\src\store\modules\app\index.ts
+ * @FilePath: \vue3Store\src\store\modules\app\index.ts
  * 版权声明
  */
 import { AppState } from '@/types';
@@ -29,6 +29,7 @@ const useAppStore = defineStore({
     toggleSidebar() {
       this.sidebar.opened = !this.sidebar.opened;
       this.sidebar.withoutAnimation = false;
+      console.log(this.sidebar.opened)
       if (this.sidebar.opened) {
         localStorage.set('sidebarStatus', 1);
       } else {

@@ -48,11 +48,9 @@
   
   watchEffect(() => {
     if (width.value < WIDTH) {
-      console.log('1')
       app.toggleDevice('mobile');
       app.closeSideBar(true);
     } else {
-      console.log('2')
       app.toggleDevice('desktop');
     }
   });

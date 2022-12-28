@@ -1,7 +1,7 @@
 /*
  * @Author: Soulmate
  * @Date: 2022-06-22 09:53:07
- * @LastEditTime: 2022-12-27 09:04:31
+ * @LastEditTime: 2022-12-27 17:26:21
  * @LastEditors: Soulmate
  * @Description: 
  * @FilePath: \vue3Store\src\permission.ts
@@ -16,8 +16,8 @@ NProgress.configure({ showSpinner: false }); // 进度环显示/隐藏
 
 // 白名单路由
 const whiteList = ['/login', '/home'];
-
 router.beforeEach(async (to, from, next) => {
+  document.title = to.meta.title as string ? (`${to.meta.title} - 卓越者开发平台`) as string : '卓越者 · 一群热爱者';
   NProgress.start();
   const { user, permission } = useStore();
   const hasToken = user.token;
@@ -29,7 +29,6 @@ router.beforeEach(async (to, from, next) => {
     } else {
       const hasGetUserInfo = user.roles.length > 0;
       if (hasGetUserInfo) {
-        console.log(to, 'to')
         if (to.matched.length === 0) {
           from.name ? next({ name: from.name }) : next('/401');
         } else {
@@ -40,7 +39,6 @@ router.beforeEach(async (to, from, next) => {
           await user.getUserInfo();
           const roles = user.roles;
           const accessRoutes: any = await permission.generateRoutes(roles);
-          console.log(accessRoutes, 'accessRoutes')
           accessRoutes.forEach((route: any) => {
             router.addRoute(route);
           });
